@@ -1,2 +1,3 @@
 # ER-Uganda
-Elections Results | Uganda: Private Repository
+Elections Results | Uganda: File Repository
+(Under development)
