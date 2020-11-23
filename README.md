@@ -1,3 +1,3 @@
-# ER-Uganda
-Elections Results | Uganda: File Repository
+# UEDP
+Uganda Elections Data Portal | Uganda: File Repository
 (Under development)
