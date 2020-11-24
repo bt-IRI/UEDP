@@ -24,7 +24,7 @@ All the original EC publications used were originally PDF documents. IRI took th
 
 ## II. Source Documents
 * 2016 Presidential Election Source Files
-    * 2016 Election Results by Polling Station PDF
+    * 2016 Election Results by Polling Station PDF &#8594; Machine-readable version
     * 2016 Polling Stations List PDF
     * National Voters' Register for 2015/2016 (Originally 28,010 PDFs and no longer available on EC site)
 * 2011 Presidential Election Source Files
