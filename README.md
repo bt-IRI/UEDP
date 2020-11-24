@@ -9,9 +9,6 @@ This repository contains the complete UEDP datasets that are presented on the UE
 ## Disclaimer:
 ***While IRI aims to make the information on this website as timely and accurate as possible, IRI makes no claims nor guarantees about the accuracy and completeness of the data on this site beyond what is outlined in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.***
 
- 
-For all of the information on how the UEDP datasets and maps were created, please refer to the full methodology.
-
 # Repository Table of Contents
 ## I. Methodology
 ### Summary:
@@ -25,9 +22,15 @@ All the original EC publications used were originally PDF documents. IRI took th
 
 *3.	Geographical Representation:* Since the start of Uganda’s multi-party presidential elections in 2006, Uganda’s number of districts, parishes, and polling stations has increased. Most recently, the number of districts has increased to 134 under a 2015 Act of Parliament that reorganized the districts at the outset of 2019.  Because of this, the original election results publications over the three election years are hard to compare as each year shows different geographical breakdowns. IRI solves this challenge by re-sorting the election data for these three years into a common set of geographical units that aligns with the 2019 reorganization. These standardized 2019 units include regions, districts, and parishes. These units are described in the final UEDP datasets and UEDP’s updated map file allows the election data to be overlaid on interactive maps that are displayed in the web portal.
 
-
 ## II. Source Documents
-
+* 2016 Presidential Election Source Files
+    * 2016 Election Results by Polling Station PDF
+    * 2016 Polling Stations List PDF
+    * National Voters' Register for 2015/2016 (Originally 28,010 PDFs and no longer available on EC site)
+* 2011 Presidential Election Source Files
+    * 2011 Election Results by Polling Station PDF
+* 2006 Presidential Election Source Files
+    * 2006 Election Results by Polling Station PDF
 
 ## III. UEDP Datasets
 
