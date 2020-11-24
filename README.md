@@ -7,7 +7,7 @@ The UEDP consists of a user-friendly website that allows users to visualize, ana
 This repository contains the complete UEDP datasets that are presented on the UEDP website. This repository also contains the machine-readable conversions of the EC's original election data publications, and also zipped archives of the EC's PDF publications of this election data. This repository also contains UEDP's methodology and annexes. Finally, UEDP's customized maps that are used to display data can also are available for download as GeoJSON files.
 
 ## Disclaimer:
-***![#C00000](While IRI aims to make the information on this website as timely and accurate as possible, IRI makes no claims nor guarantees about the accuracy and completeness of the data on this site beyond what is outlined in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.)'#C00000'***
+![#C00000](While IRI aims to make the information on this website as timely and accurate as possible, IRI makes no claims nor guarantees about the accuracy and completeness of the data on this site beyond what is outlined in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.)`#C00000`
 
 # Repository Table of Contents
 ## I. Methodology
