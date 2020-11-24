@@ -24,9 +24,9 @@ All the original EC publications used were originally PDF documents. IRI took th
 
 ## II. Source Documents
 * 2016 Presidential Election Source Files
-    * [2016 Election Results by Polling Station PDF](https://github.com/bt-IRI/UEDP/tree/master/Original%20Source%20Data/2016%20Election/2016%20Election%20Results) &#8594; Machine-readable download: [Converted 2016 Results.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20Results.csv)
-    * 2016 Polling Stations List PDF
-    * National Voters' Register for 2015/2016 (Originally 28,010 PDFs and no longer available on EC site)
+    * [2016 Election Results by Polling Station PDF](https://github.com/bt-IRI/UEDP/tree/master/Original%20Source%20Data/2016%20Election/2016%20Election%20Results) &#8594; Machine-readable conversion: [Converted 2016 Results.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20Results.csv)
+    * [2016 Polling Stations List PDF](https://github.com/bt-IRI/UEDP/tree/master/Original%20Source%20Data/2016%20Election/2016%20Election%20Station%20List) &#8594; Machine-readable conversion: [Converted 2016 Polling Stations List.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20Polling%20Stations%20List.csv)
+    * National Voters' Register for 2015/2016 (Originally 28,010 PDFs and no longer available on EC site) &#8594; Machine-readable (station aggregates) conversion: [Converted 2016 NVR Registered voter Age by Gender](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20NVR%20Registered%20voter%20Age%20by%20Gender.csv)
 * 2011 Presidential Election Source Files
     * 2011 Election Results by Polling Station PDF
 * 2006 Presidential Election Source Files
