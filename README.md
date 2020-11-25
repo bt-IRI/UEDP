@@ -7,7 +7,7 @@ The UEDP consists of a user-friendly website that allows users to visualize, ana
 This repository contains the complete UEDP datasets that are presented on the UEDP website. This repository also contains the machine-readable conversions of the EC's original election data publications, and also zipped archives of the EC's PDF publications of this election data. This repository also contains UEDP's methodology and annexes. Finally, UEDP's customized maps that are used to display data can also are available for download as GeoJSON files.
 
 ## Disclaimer:
-- ![#C00000](While IRI aims to make the information on this website as timely and accurate as possible, IRI makes no claims nor guarantees about the accuracy and completeness of the data on this site beyond what is outlined in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.)`#C00000`
+***While IRI aims to make the information on this website as timely and accurate as possible, IRI makes no claims nor guarantees about the accuracy and completeness of the data on this site beyond what is outlined in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.***
 
 # Repository Table of Contents
 ## I. Methodology
@@ -27,12 +27,17 @@ The following official Electoral Commission PDF publications were used to constr
 
 * 2016 Presidential Election Source Files
     * [2016 Election Results by Polling Station PDF](https://github.com/bt-IRI/UEDP/tree/master/Original%20Source%20Data/2016%20Election/2016%20Election%20Results) &#8594; Machine-readable conversion: [Converted 2016 Results.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20Results.csv)
+         * Original on EC site [here](https://ec.or.ug/ecresults/0-Final_Presidential_Results_Polling%20Station.pdf), Internet Archive capture [here](https://web.archive.org/web/20170109064503/https:/ec.or.ug/ecresults/0-Final_Presidential_Results_Polling%20Station.pdf)
     * [2016 Polling Stations List PDF](https://github.com/bt-IRI/UEDP/tree/master/Original%20Source%20Data/2016%20Election/2016%20Election%20Station%20List) &#8594; Machine-readable conversion: [Converted 2016 Polling Stations List.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20Polling%20Stations%20List.csv)
+         *  Original on EC site [here](https://www.ec.or.ug/sites/VoterCount/Statistics%20by%20Polling%20Station.pdf), Internet Archive capture [here](https://web.archive.org/web/20170107081126/https:/www.ec.or.ug/sites/VoterCount/Statistics%20by%20Polling%20Station.pdf)
     * NVR for 2015/2016 (No longer from EC) &#8594; Aggregated conversion: [Converted 2016 NVR Registered voter Age by Gender.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2016%20Conversions/Converted%202016%20NVR%20Registered%20voter%20Age%20by%20Gender.csv)
+         *  Note: The NVR for 2015/2016 was originally offered through a portal on the EC site. However, this edition of the NVR is no longer available as a new NVR was created ahead of the 2020 Presidential Election. The UEDP presents registered voter demographic data from the 2015/2016 NVR that was collected while this edition was still online. Please see the station-level aggregated conversion of the original 2015/2016 NVR for demographic infromation used in the 2016 UEDP dataset. Please see the methodology for more information on the 2015/2016 NVR and how its original 28,010 Station List PDFs were transformed for use in the UEDP.
 * 2011 Presidential Election Source Files
-    * [2011 Election Results by Polling Station PDF]
+    * [2011 Election Results by Polling Station PDF](https://github.com/bt-IRI/UEDP/tree/master/Original%20Source%20Data/2011%20Election/2011%20Election%20Results) &#8594; Machine-readable conversion: [Converted 2011 Results.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2011%20Conversions/Converted%202011%20Results.csv)
+         * Original on EC site [here](https://www.ec.or.ug/sites/Elec_results/2011_Pres_Pstn.pdf), Internet Archive capture [here](https://web.archive.org/web/20170107151330/http:/www.ec.or.ug/sites/Elec_results/2011_Pres_Pstn.pdf)
 * 2006 Presidential Election Source Files
-    * 2006 Election Results by Polling Station PDF
+    * [2006 Election Results by Polling Station PDF](https://github.com/bt-IRI/UEDP/blob/master/Original%20Source%20Data/2006%20Election/2006%20Election%20Results/Presidential%20Election%202006%20-%20Results%20by%20Polling%20Station.7z) &#8594; Machine-readable conversion: [Converted 2006 Results.csv](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2006%20Conversions/Converted%202006%20Results.csv)
+         * Original on EC site [here](https://www.ec.or.ug/sites/Elec_results/2006_pres_polling.pdf), Internet Archive capture [here](https://web.archive.org/web/20181222125155/http:/www.ec.or.ug/sites/Elec_results/2006_pres_polling.pdf)
 
 ## III. UEDP Datasets
 
