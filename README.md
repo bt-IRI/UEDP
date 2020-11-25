@@ -68,6 +68,7 @@ The unsimplified version of the UEDP parish map is available for download here:
 * [Unsimplified - Admin. Level 6: Parishes](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Maps/UEDP-(Unsimplified%20Lvl.6%20Parish%20Map).7z)
 
 ***For linking the election datasets to the maps...***
+
 These GeoJSON files are indexed to the UEDP Datasets using a common 'ID' key. The map files themselves do not contain any data beyond geometries and the 'ID' key.
 
 To link the 2011 and 2016 UEDP datasets to each of the maps, the datasets' ID should be trimmed to the appropriate number of characters. The dataset IDs for 2011 and 2016 are 14-characters. These indicate REGION-DISTRICT-COUNTY-PARISH-STATION.
