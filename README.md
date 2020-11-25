@@ -1,4 +1,4 @@
-# Uganda Elections Data Portal
+# Uganda Elections Data Portal (UEDP) Repository
 ## Background:
 The [Uganda Elections Data Portal (UEDP)](https://uganda.electionsdataportal.org/result/Presidential/2016/National/) was designed by the [International Republican Institute (IRI)](https://www.iri.org/) in partnership with [Keshif](https://keshif.me/). IRI is a premier international democracy-development organization. Our nonpartisan, nongovernmental Institute has performed high-impact work in more than 100 countries since 1983—in Africa, Asia, Eurasia, Europe, Latin America and the Caribbean, and the Middle East and North Africa—and currently has offices in 40 countries worldwide.
 
