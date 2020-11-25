@@ -56,6 +56,28 @@ While the UEDP portal will output summary report downloads for particular geogra
 
 
 ## IV. UEDP Maps
+The customized map files used to display data in the portal are also made available for download on this repository in GeoJSON format.
 
+The following files are 'simplified' geometries. These files are suitable for representing the data as it stands with a smaller-size map file. However, if users wish to adjust any of the map geometries, it is recommended that users instead download the 'Unsimplified' version of the Parish Map and use this as the starting point for additional re-adjustments.
+* [Admin. Level 1: Regions](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Maps/UEDP-(Lvl.1%20Regions).7z)
+* [Admin. Level 3: Districts](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Maps/UEDP-(Lvl.%203%20Districts).7z)
+* [Admin. Level 4: Counties](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Maps/UEDP-(Lvl.4%20Counties).7z)
+* [Admin. Level 6: Parishes](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Maps/UEDP-(Lvl.6%20Parishes).7z)
 
+The unsimplified version of the UEDP parish map is available for download here:
+* [Unsimplified - Admin. Level 6: Parishes](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Maps/UEDP-(Unsimplified%20Lvl.6%20Parish%20Map).7z)
 
+***For linking the election datasets to the maps...***
+These GeoJSON files are indexed to the UEDP Datasets using a common 'ID' key. The map files themselves do not contain any data beyond geometries and the 'ID' key.
+
+To link the 2011 and 2016 UEDP datasets to each of the maps, the datasets' ID should be trimmed to the appropriate number of characters. The dataset IDs for 2011 and 2016 are 14-characters. These indicate REGION-DISTRICT-COUNTY-PARISH-STATION.
+* To link REGION data to the region map, trim the dataset IDs to 1 character.
+* To link DISTRICT data to the district map, trim the dataset IDs to 7 characters.
+* To link COUNTY data to the county map, trim the dataset IDs to 5 characters.
+* To link PARISH data to the county map, trim the dataset IDs to 11 characters.
+
+Unlike the 2011 and 2016 datasets, the 2006 UEDP dataset is only geographically normalized with other datasets down to the DISTRICT level. Due to this difference in normalization, the 2006 IDs are only 10 characters in length.
+* To link 2006 REGION data to the region map, trim the 2006 IDs to 1 character.
+* To link 2006 DISTRICT data to the region map, trim the 2006 IDs to 7 characters.
+
+For additonal information on how the election data was geographically normalized, and how the custom UEDP maps were created, please refer to the methodology.
