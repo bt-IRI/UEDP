@@ -46,6 +46,13 @@ The following official Electoral Commission PDF publications were used to constr
          * Original on EC site [here](https://www.ec.or.ug/sites/Elec_results/2006_pres_polling.pdf), Internet Archive capture [here](https://web.archive.org/web/20181222125155/http:/www.ec.or.ug/sites/Elec_results/2006_pres_polling.pdf)
 
 ## III. UEDP Datasets
+While the UEDP portal will output summary report downloads for particular geographical areas and elections, the following station-level datasets are made available for download here:
+* UEDP 2016 Dataset
+* UEDP 2011 Dataset
+* UEDP 2006 Dataset
+* UEDP 2011-2016 Unified Dataset
+
+
 
 ## IV. UEDP Maps
 
