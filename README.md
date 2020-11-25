@@ -47,10 +47,11 @@ The following official Electoral Commission PDF publications were used to constr
 
 ## III. UEDP Datasets
 While the UEDP portal will output summary report downloads for particular geographical areas and elections, the following station-level datasets are made available for download here:
-* [UEDP 2016 Dataset](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Datasets/UEDP%202006%20Dataset.7z)
-* UEDP 2011 Dataset
-* UEDP 2006 Dataset
-* UEDP 2011-2016 Unified Dataset
+* [UEDP 2016 Dataset](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Datasets/UEDP%202016%20Dataset.7z)
+* [UEDP 2011 Dataset](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Datasets/UEDP%202011%20Dataset.7z)
+* [UEDP 2006 Dataset](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Datasets/UEDP%202006%20Dataset.7z)
+* [UEDP 2011-2016 Unified Dataset](https://github.com/bt-IRI/UEDP/raw/master/UEDP%20Datasets/UEDP%20Unified%202011-2016%20Dataset.7z)
+     * Unlike the other individual-year datasets, this 'Unified' version combines all data from the 2011 and 2016 datasets into a single file. The UEDP 2011 and 2016 datasets are normalized down to the 'Parish' administrative unit across both election years. 
 
 
 
