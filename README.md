@@ -13,7 +13,7 @@ This repository contains the complete UEDP datasets that are presented on the UE
 
 
 ## Disclaimer:
-***While IRI aims to make the information on this website as timely and accurate as possible, IRI makes no claims nor guarantees about the accuracy and completeness of the data on this site beyond what is outlined in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.***
+***While IRI and Keshif aim to make the information on this website as timely and accurate as possible, we make no claims nor guarantees about the accuracy and completeness of the data in our verification process, and expressly disclaims liability for errors and omissions in the contents of this site.***
 
 # Repository Table of Contents
 ## I. Methodology
