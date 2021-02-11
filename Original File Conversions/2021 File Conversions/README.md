@@ -7,7 +7,7 @@ The UEDP team converted all of the EC's 2021 General Election PDF publications i
 * [Converted_2021_Polling_Stations_Results.csv](...)
 * [Converted_2021_Nullified_Polling_Stations.csv](...)
 * [Converted_2021_District_Summary_Report.csv](...)
-* [Converted_2021_Pollings_and_Voter_Count.csv](...)
+* [Converted_2021_Polling_Stations_and_Voter_Count.csv](...)
 
 Code to convert all of the original PDF files to the '.csv' files linked above can be found in [UEDP 2021 Conversion Code](...). Both the UGD2021_Conversion.R and UGD2021_Conversion_Driver.R are required to execute and produce the UEDP's team's conversions of the 2021 data.
 
