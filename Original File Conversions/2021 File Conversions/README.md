@@ -11,6 +11,15 @@ The UEDP team converted all of the EC's 2021 General Election PDF publications i
 
 Code to convert all of the original PDF files to the '.csv' files linked above can be found in [UEDP 2021 Conversion Code](...). Both the UGD2021_Conversion.R and UGD2021_Conversion_Driver.R are required to execute and produce the UEDP's team's conversions of the 2021 data.
 
+## Instructions:
+1. Download both .R files (UGD2021_Conversion.R and UGD2021_Conversion_Driver.R) and store these in the same folder.
+2. Open UGD2021_Conversion.R and run the code under "1. PDF FILE DOWNLOADS & LOOKUP DATAFRAME FOR CONVERSION." 
+3. Run the code under "Other 2021 file downloads" if you wish to download and convert the list of nullified polling stations. (District Tally Sheet Converstion to be added to this code soon!)
+4. Ensure that all R packaged under "Notes on Driver" are installed and that the environment for rJava is set correctly.
+5. Run remaining code to convert station results PDFs and the nullified polling stations PDF. The code will write the conversions as .csv files.
+
+
+
 ## Package Citations:
 The following R packages were instrumental in the UEDP's conversion of the 2021 General Election results.
 * Thomas J. Leeper (2018). tabulizer: Bindings for Tabula PDF Table Extractor Library. R package version 0.2.2.
