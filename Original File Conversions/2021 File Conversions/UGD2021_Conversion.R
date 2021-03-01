@@ -1,8 +1,12 @@
 # Author: UEDP Team @ International Republican Institute
-# Last modified: 2/11/20
+# Last modified: 3/1/21
 
 #****************************************************************************
 # 1. PDF FILE DOWNLOADS & LOOKUP DATAFRAME FOR CONVERSION
+# 2. STATION PDF FILES CONVERSION
+# 3. NULLIFIED STATIONS PDF FILE CONVERSION
+# 4. DISTRICT TALLY SHEET PDF CONVERSION
+# 5. VOTER COUNT BY STATIONS PDF CONVERSION
 
 #**********************************
 # 2021 Station Results downloads:
@@ -32,17 +36,22 @@ for (i in 1:nrow(EC_html)) {
 }
 
 
-#**********************************
+#*************************************************
 # Other 2021 file downloads:
 #   1. Nullified Polling Stations
 #   2. District-level Summary
-#**********************************
+#   3. Polling Station Registration Statistics
+#*************************************************
 download.file("https://www.ec.or.ug/ecresults/2021/NullifiedPollingStationsPresidential2021",
               "NullifiedPollingStationsPresidential2021.pdf",
               mode = "wb")
 
 download.file("https://www.ec.or.ug/ecresults/2021/District_Summary_PRESIDENT_FINAL_2021.pdf",
               "District_Summary_PRESIDENT_FINAL_2021.pdf",
+              mode = "wb")
+
+download.file("https://www.ec.or.ug/sites/default/files/docs/Voter%20Count%20by%20Polling%20Stations%202021.pdf",
+              "Voter_Count_by_Polling_Stations_2021.pdf",
               mode = "wb")
 
 #****************************************************************************
@@ -86,7 +95,6 @@ source("UGD2021_Conversion_Driver.R")
 # Convert first 50... chunks of conversions can be changed as needed.
 # Tabulizer tends to get overloaded and crash if too many PDFs are loaded at once, so recommend splitting files into chunks.
 # If Tabulizer crashes, try shrinking the start/stop size of each conversion chunk... this seems to be a memory issue. 
-
 PDF_data_list <- list()
 PDF_data_list <- Convert_2021_StationResults(PDF_data_list = PDF_data_list, 
                                              PDF_links = EC_html,
@@ -96,9 +104,7 @@ PDF_data_list <- Convert_2021_StationResults(PDF_data_list = PDF_data_list,
 
 Processed_1_50.df <- do.call(rbind.data.frame, PDF_data_list)
 
-
 # Convert 51-146... chunks of conversions can be changed as needed. Same comment on overloading Tabulizer applies. Code below assumes two chunks of conversion were done.
-
 PDF_data_list <- list()
 PDF_data_list <- Convert_2021_StationResults(PDF_data_list = PDF_data_list, 
                                              PDF_links = EC_html,
@@ -107,18 +113,14 @@ PDF_data_list <- Convert_2021_StationResults(PDF_data_list = PDF_data_list,
 
 Processed_51_146.df <- do.call(rbind.data.frame, PDF_data_list)
 
-
 #**********************************
 # Converted data assembly/cleaning:
 #**********************************
-
 Processed.df <- rbind(Processed_1_50.df, Processed_51_146.df)
 rownames(Processed.df) <- c(1:nrow(Processed.df))
 
-
 # Correct for one error on Reg.Voter in Wakiso at "KAWEMPE MAJAANI FACTORY (NAM - Z)"
 Processed.df[33520,6] <- 1037
-
 
 # WRITE THE CONVERTED DATASET AS .csv
 write.csv(Processed.df, "Converted_2021_Results.csv")
@@ -133,16 +135,50 @@ write.csv(Processed.df, "Converted_2021_Results.csv")
 
 
 
+#****************************************************************************
+# 3. NULLIFIED STATIONS PDF FILE CONVERSION
+source("UGD2021_Conversion_Driver.R")
+
+Processed.df <- Convert_2021_NullStations("NullifiedPollingStationsPresidential2021.pdf")
+
+write.csv(Processed.df, "Converted_2021_NullStations.csv", row.names = FALSE)
+
+#****************************************************************************
+
+
+
+
+
 
 
 
 
 
 #****************************************************************************
-# 3. NULLIFIED STATIONS PDF FILE CONVERSION
+# 4. DISTRICT TALLY SHEET PDF CONVERSION
+source("UGD2021_Conversion_Driver.R")
 
-Processed.df <- Convert_2021_NullStations("NullifiedPollingStationsPresidential2021.pdf")
+Processed.df <- Convert_2021_DistTallySheet("District_Summary_PRESIDENT_FINAL_2021.pdf")
 
-write.csv(Processed.df, "Converted_2021_NullStations.csv", row.names = FALSE)
+write.csv(Processed.df, "Converted_2021_DistrictTallySheet.csv", row.names = FALSE)
+
+#****************************************************************************
+
+
+
+
+
+
+
+
+
+
+#****************************************************************************
+# 5. VOTER COUNT BY STATIONS PDF CONVERSION
+source("UGD2021_Conversion_Driver.R")
+
+Processed.df <- Convert_2021_VoterCountbyStations("Voter_Count_by_Polling_Stations_2021.pdf")
+
+write.csv(Processed.df, "Converted_2021_VoterCountbyStations.csv", row.names = FALSE)
 
 #****************************************************************************

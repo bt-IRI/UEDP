@@ -193,3 +193,123 @@ Convert_2021_NullStations = function(NullStationsFile) {
   colnames(PDF.df) <- c("No.","District","Constituency","Scounty","Parish","POLLING STATION","VOTERS")
   return(PDF.df)
 }
+
+
+
+#*****************************************
+# Code to convert district tally sheet
+#*****************************************
+
+Convert_2021_DistTallySheet = function(DistTallySheet_File) {
+  PDF_doc = DistTallySheet_File
+  
+  # Read first page separately due to different dimensions
+  PDF_geos1 <- extract_tables(PDF_doc, pages = 1, method = "stream", guess = FALSE, 
+                              area = list(c(145.74251,  15.95636, 560.36827, 830.39986)), 
+                              columns = list(c(95.45228, 133.64150, 182.7419, 231.0630, 280.1634, 329.2638, 376.8055, 426.6853, 474.6166, 523.3274, 572.427, 621.5282, 669.8493, 708.0385, 747.0071, 785.1963)))
+  
+  # Read remaining pages
+  PDF_geos2_6 <- extract_tables(PDF_doc, pages = 2:6, method = "stream", guess = FALSE, 
+                                area = list(c(28.90693, 16.39104, 562.43532, 829.38671)), 
+                                columns = list(c(95.45228, 133.64150, 182.7419, 231.0630, 280.1634, 329.2638, 376.8055, 426.6853, 474.6166, 523.3274, 572.427, 621.5282, 669.8493, 708.0385, 747.0071, 785.1963)))
+  
+  
+  PDF_geos1 <- do.call(rbind.data.frame, PDF_geos1[which(lapply(PDF_geos1, ncol)==17)])
+  PDF_geos2_6 <- do.call(rbind.data.frame, PDF_geos2_6[which(lapply(PDF_geos2_6, ncol)==17)])
+  
+  PDF.df <- rbind(PDF_geos1, PDF_geos2_6)
+  
+  
+  # Remove junk header rows and eliminate district factor
+  PDF.df <- PDF.df[-c(1:4),]
+  
+  PDF.df[,1] <- as.character(PDF.df[,1])
+  PDF.df[,2] <- as.character(PDF.df[,2])
+  PDF.df[,17] <- as.character(PDF.df[,17])
+  
+  for (i in 1:(nrow(PDF.df)-1)) {
+    if(PDF.df[i+1,2]=="" & isFALSE(PDF.df[i+1,1]=="")) {
+      PDF.df[i,1] <- stri_trim(paste(PDF.df[i,1],PDF.df[i+1,1], sep = " "))
+    }
+    PDF.df[i,17] <- stri_trim(paste(PDF.df[i,17],PDF.df[i+1,17], sep = ""))
+  }
+  
+  PDF.df <- PDF.df[-c(which(PDF.df[,2]=="")),]
+  
+  for (i in 2:16) {
+    PDF.df[,i] <- as.numeric(as.character(PDF.df[,i]))
+  }
+  
+  colnames(PDF.df) <- c("District","Reg. Voters","Amuriat Oboi Patrick", "Kabuleta Kiiza Joseph", "Kalembe Nancy Linda", "Katumba John", "Kyagulanyi Ssentamu Robert",
+                        "Mao Norbert", "Mayambala Willy", "Mugisha Muntu Gregg", "Mwesigye Fred", "Tumukunde Henry Kakurugu", "Yoweri Museveni Tibuhaburwa Kaguta",
+                        "Valid Votes", "Invalid Votes", "Total Votes","Received Station")
+  return(PDF.df)
+}
+
+
+#*****************************************
+# Code to convert reg. voters by station
+#*****************************************
+Convert_2021_VoterCountbyStations = function(VoterCountbyStations_file) {
+  PDF_doc = VoterCountbyStations_file
+  
+  PDF_pgs <- pdf_info(PDF_doc)$pages
+  
+  PDF_geo_list <- list()
+  for (i in 1:PDF_pgs) {
+    PDF_geos <- extract_tables(PDF_doc, pages = i, method = "stream", guess = FALSE, 
+                               area = list(c(114.54974, 12.69893, 524.68586, 756.07070 )), 
+                               columns = list(c(41.53663, 93.60470, 123.2434, 206.5523, 232.9869, 317.8979, 348.3377, 434.0497, 462.0864, 558.2120, 574.2330, 693.5890)))
+    PDF_geo_list <- append(PDF_geo_list, PDF_geos, after = length(PDF_geo_list))
+    print(paste("Extracting page... ", i, "/", PDF_pgs, sep = ""))
+  }
+  
+  PDF.df <- do.call(rbind.data.frame, PDF_geo_list[which(lapply(PDF_geo_list, ncol)==13)])
+  
+  # Delete final total row
+  PDF.df <- PDF.df[-c(nrow(PDF.df)),]
+  
+  # Change factors to characters
+  for (i in 1:ncol(PDF.df)) {
+    PDF.df[,i] <- as.character(PDF.df[,i])
+  }
+  
+  # Fix wrapped location labels
+  for (i in 1:(nrow(PDF.df)-1)) {
+    if (isFALSE(PDF.df[i,1]=="") & PDF.df[i,2]=="") {
+      PDF.df[i,2] <- paste(PDF.df[i-1,2], PDF.df[i+1,2], sep = "")
+    }
+    if (isFALSE(PDF.df[i,1]=="") & PDF.df[i,4]=="") {
+      PDF.df[i,4] <- paste(PDF.df[i-1,4], PDF.df[i+1,4], sep = " ")
+    }
+    if (isFALSE(PDF.df[i,1]=="") & PDF.df[i,6]=="") {
+      PDF.df[i,6] <- paste(PDF.df[i-1,6], PDF.df[i+1,6], sep = " ")
+    }
+    if (isFALSE(PDF.df[i,1]=="") & PDF.df[i,8]=="") {
+      PDF.df[i,8] <- paste(PDF.df[i-1,8], PDF.df[i+1,8], sep = " ")
+    }
+    if (isFALSE(PDF.df[i,1]=="") & PDF.df[i,10]=="") {
+      PDF.df[i,10] <- paste(PDF.df[i-1,10], PDF.df[i+1,10], sep = " ")
+    }
+    if (isFALSE(PDF.df[i,1]=="") & PDF.df[i,12]=="") {
+      PDF.df[i,12] <- paste(PDF.df[i-1,12], PDF.df[i+1,12], sep = " ")
+    }
+  }
+  
+  # Remove junk wrapped rows
+  PDF.df <- PDF.df[-c(which(PDF.df[,1]=="")),]
+  
+  # Set reg. voters numeric
+  PDF.df[,13] <- as.numeric(PDF.df[,13])
+  
+  # Set column names
+  colnames(PDF.df) <- c("DISTRICT CODE", "DISTRICT NAME", 
+                        "COUNTY CODE", "COUNTY NAME", 
+                        "EA CODE", "ELECTORAL AREA NAME",
+                        "SUB COUNTY CODE", "SUB COUNTY NAME",
+                        "PARISH CODE", "PARISH NAME",
+                        "PS CODE", "POLLING STATION NAME", "VOTER COUNT")
+  
+  return(PDF.df)
+}
+
