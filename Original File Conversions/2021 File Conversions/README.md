@@ -4,10 +4,10 @@ Like in previous general elections, Electoral Commission of Uganda (EC) uploaded
 
 ## Contents:
 The UEDP team converted all of the EC's 2021 General Election PDF publications into machine-readable '.csv' files. Our conversions of these documents are provided via the links below. In addition, the UEDP team has provided our code to download and convert all of the 2021 EC PDFs into these '.csv' conversion files.
-* [Converted_2021_Results.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_Results.7z)
-* [Converted_2021_NullStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_NullStations.7z)
-* [Converted_2021_DistrictTallySheet.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_DistrictTallySheet.7z)
-* [Converted_2021_VoterCountbyStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_VoterCountbyStations.7z)
+* 2021 Results by Polling Station &#8594; [Converted_2021_Results.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_Results.7z)
+* 2021 List of Nullified Polling Stations &#8594; [Converted_2021_NullStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_NullStations.7z)
+* 2021 District Tally Sheet &#8594; [Converted_2021_DistrictTallySheet.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_DistrictTallySheet.7z)
+* 2021 Voter Count by Polling Stations &#8594; [Converted_2021_VoterCountbyStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_VoterCountbyStations.7z)
 
 Code to convert all of the original PDF files to the '.csv' files linked above can be found in [UEDP 2021 Conversion Code](...). Both the UGD2021_Conversion.R and UGD2021_Conversion_Driver.R are required to execute and produce the UEDP's team's conversions of the 2021 data.
 
