@@ -4,15 +4,15 @@ Like in previous general elections, Electoral Commission of Uganda (EC) uploaded
 
 ## Contents:
 The UEDP team converted all of the EC's 2021 General Election PDF publications into machine-readable '.csv' files. Our conversions of these documents are provided via the links below. In addition, the UEDP team has provided our code to download and convert all of the 2021 EC PDFs into these '.csv' conversion files.
-* [Converted_2021_Polling_Stations_Results.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_Results.7z)
+* [Converted_2021_Results.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_Results.7z)
 * [Converted_2021_NullStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_NullStations.7z)
-* [Converted_2021_District_Summary_Report.csv](...)
-* [Converted_2021_Polling_Stations_and_Voter_Count.csv](...)
+* [Converted_2021_DistrictTallySheet.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_DistrictTallySheet.7z)
+* [Converted_2021_VoterCountbyStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_VoterCountbyStations.7z)
 
 Code to convert all of the original PDF files to the '.csv' files linked above can be found in [UEDP 2021 Conversion Code](...). Both the UGD2021_Conversion.R and UGD2021_Conversion_Driver.R are required to execute and produce the UEDP's team's conversions of the 2021 data.
 
 ## Instructions:
-1. Download both .R files (UGD2021_Conversion.R and UGD2021_Conversion_Driver.R) and store these in the same folder.
+1. Download both .R files ([UGD2021_Conversion.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UGD2021_Conversion.R) and [UGD2021_Conversion_Driver.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UGD2021_Conversion_Driver.R)) and store these in the same folder.
 2. Open UGD2021_Conversion.R and run the code under "1. PDF FILE DOWNLOADS & LOOKUP DATAFRAME FOR CONVERSION." 
 3. Run the code under "Other 2021 file downloads" if you wish to download and convert the list of nullified polling stations. (District Tally Sheet Converstion to be added to this code soon!)
 4. Ensure that all R packaged under "Notes on Driver" are installed and that the environment for rJava is set correctly.
