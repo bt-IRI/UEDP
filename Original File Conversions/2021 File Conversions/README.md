@@ -1,6 +1,6 @@
 # UEDP 2021 General Election Data Conversions
 ## Background:
-Like in previous general elections, Electoral Commission of Uganda (EC) uploaded PDF files describing polling station level results for the 2021 Presidential Election. The EC uploaded the station files as 146 separate PDFs and each describes a polling stations for a specific 'District' level administrative division. In addition, the EC uploaded a separate list of nullified polling stations, as well as a separate summary with results totals for each district. Finally, the EC published registered-voter statistics for each polling station ahead of the general election.
+Like in previous general elections, Electoral Commission of Uganda (EC) uploaded PDF files describing polling station level results for the 2021 Presidential Election. For detailed results across polling stations, the EC uploaded 146 separate PDFs containing station-level data across all 'District' level administrative divisions. In addition, the EC uploaded a separate list of nullified polling stations, as well as a separate summary with results totals for each district. Finally, the EC published registered-voter counts for each polling station ahead of the general election.
 
 ## Contents:
 The UEDP team converted all of the EC's 2021 General Election PDF publications into machine-readable '.csv' files. Our (zipped) machine-readable conversions of these documents are provided via the links below. In addition, the UEDP team has provided our code to download and convert all of the 2021 EC PDFs into these '.csv' conversion files.
@@ -9,7 +9,7 @@ The UEDP team converted all of the EC's 2021 General Election PDF publications i
 * 2021 District Tally Sheet &#8594; [Converted_2021_DistrictTallySheet.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_DistrictTallySheet.7z)
 * 2021 Voter Count by Polling Stations &#8594; [Converted_2021_VoterCountbyStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/Converted_2021_VoterCountbyStations.7z)
 
-Code to convert all of the original PDF files to the '.csv' files linked above can be found in [UEDP 2021 Conversion Code](...). Both the UGD2021_Conversion.R and UGD2021_Conversion_Driver.R are required to execute and produce the UEDP's team's conversions of the 2021 data.
+Instructions and code for generating each of these conversion files are povided below.
 
 ## Instructions:
 1. Download both .R files ([UGD2021_Conversion.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UGD2021_Conversion.R) and [UGD2021_Conversion_Driver.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UGD2021_Conversion_Driver.R)) and store these in the same folder.
