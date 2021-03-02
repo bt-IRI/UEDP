@@ -14,8 +14,8 @@ Instructions and code for generating each of these conversion files are povided 
 ## Instructions:
 1. Download both .R files ([UGD2021_Conversion.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UGD2021_Conversion.R) and [UGD2021_Conversion_Driver.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UGD2021_Conversion_Driver.R)) and store these in the same folder.
 2. Open UGD2021_Conversion.R and run the code under "1. PDF FILE DOWNLOADS & LOOKUP DATAFRAME FOR CONVERSION." 
-3. Run the code under "Other 2021 file downloads" if you wish to download and convert the list of nullified polling stations. (District Tally Sheet Converstion to be added to this code soon!)
-4. Ensure that all R packaged under "Notes on Driver" are installed and that the environment for rJava is set correctly.
+3. Run the code under "Other 2021 file downloads" if you wish to download and convert the list of nullified polling stations, the district tally sheet, and/or the polling station registered voter counts.
+4. Ensure that all R packages under "Notes on Driver" are installed and that the environment for rJava is set correctly.
 5. Run remaining code to convert station results PDFs and the nullified polling stations PDF. The code will write the conversions as .csv files.
 
 
