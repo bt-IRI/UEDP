@@ -1,3 +1,6 @@
+# Author: UEDP Team @ International Republican Institute
+# Last modified: 3/8/21
+
 Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_261') 
 options(java.parameters = "- Xmx2000m")
 library(rJava)
@@ -13,6 +16,7 @@ library(stringr)
 Convert_2021_StationResults = function(PDF_data_list, PDF_links, start, stop) {
   for (u in start:stop) {
     PDF_doc <- PDF_links[u, 2]
+    
     #******************************************************
     # Initial Scan of PDF for Dist./Const./Subcounty Names
     #******************************************************
@@ -20,22 +24,9 @@ Convert_2021_StationResults = function(PDF_data_list, PDF_links, start, stop) {
     Dist_Const_read <- str_split(Dist_Const_read, "\r\n")
     Dist_Const_read <- unlist(Dist_Const_read)
     
-    # Need to double-check that this works with PDFs describing multiple constitutencies...
+    # Dist Name/No Extractions
     Dist_Const <- unique(str_squish((stri_trim(Dist_Const_read[which(is.na(stri_extract_all(Dist_Const_read, regex = "CONSTITUENCY:"))==FALSE)]))))
-    #Dist_Name_No <- unique(stri_trim(substr(Dist_Const, stri_locate_last(Dist_Const, regex = "DISTRICT:")[,2][2]+1, stri_locate_first(Dist_Const, regex = "CONSTITUENCY:")[,1][1]-1)))
     Dist_Name_No <- str_squish(str_trim(substr(Dist_Const[1], stri_locate_first(Dist_Const, regex = "DISTRICT:")[,2][1]+1, stri_locate_first(Dist_Const, regex = "CONSTITUENCY:")[,1][1]-1)))
-    
-    # Consituence Name/No Extractions
-    Const_Name_No <- stri_locate_last(Dist_Const_read[which(is.na(stri_extract_all(Dist_Const_read, regex = "CONSTITUENCY:"))==FALSE)], regex = "CONSTITUENCY:")[,2]
-    Const_Name_No <- unique(str_squish(stri_trim(substr(
-      Dist_Const_read[which(is.na(stri_extract_all(Dist_Const_read, regex = "CONSTITUENCY:"))==FALSE)], 
-      Const_Name_No+1, 
-      nchar(Dist_Const_read[which(is.na(stri_extract_all(Dist_Const_read, regex = "CONSTITUENCY:"))==FALSE)])))))
-    
-    # Subcounty Name/No Extractions
-    Subcounty_Name_No <- unique(str_squish((stri_trim(Dist_Const_read[which(is.na(stri_extract_all(Dist_Const_read, regex = "Sub-county:"))==FALSE)]))))
-    Subcounty_Name_No <- stri_trim(substr(Subcounty_Name_No, stri_locate_last(Subcounty_Name_No, regex = "Sub-county:")[,2]+1, nchar(Subcounty_Name_No)))
-    
     
     #******************************************************
     # PDF Table Extraction & Dataframe Assembly
@@ -50,60 +41,88 @@ Convert_2021_StationResults = function(PDF_data_list, PDF_links, start, stop) {
     PDF.df <- do.call(rbind.data.frame, PDF_geos[which(lapply(PDF_geos, ncol)==17)])
     
     
-    # Remove original headers & junk rows
-    PDF.df <- PDF.df[-c(which(PDF.df[,17]=="")),]
-    PDF.df <- PDF.df[-c(which(PDF.df[,17]=="Total" | PDF.df[,17]=="Votes")),]
+    # Add subcounty data
     
-    # Set parish and station columns to character before wrap corrections
+    Subcounty_Name_No <- c()
+    for (i in 1:nrow(PDF.df)) {
+      if(is.na(stri_extract_all(PDF.df[i,2], regex = "Sub-county:"))) {
+        Subcounty_Name_No <- append(Subcounty_Name_No, "", after = length(Subcounty_Name_No))
+      } else {
+        Subcounty_Name_No <- append(Subcounty_Name_No, paste(as.character(PDF.df[i,2]),
+                                                             as.character(PDF.df[i,3]),
+                                                             as.character(PDF.df[i,4]),
+                                                             as.character(PDF.df[i,5]),
+                                                             sep = ""),
+                                    after = length(Subcounty_Name_No))
+      }
+    }
+    
+    PDF.df <- cbind.data.frame(Subcounty_Name_No, PDF.df)
+    
+    # Add constituency data
+    
+    Const_Name_No <- c()
+    for (i in 1:nrow(PDF.df)) {
+      if(is.na(stri_extract_all(PDF.df[i,2], regex = "DISTRICT:"))) {
+        Const_Name_No <- append(Const_Name_No, "", after = length(Const_Name_No))
+      } else {
+        Const_Name_No <- append(Const_Name_No, paste(as.character(PDF.df[i,9]),
+                                                     paste(
+                                                       as.character(PDF.df[i,10]),
+                                                       as.character(PDF.df[i,11]),
+                                                       as.character(PDF.df[i,12]),
+                                                       as.character(PDF.df[i,13]),
+                                                       as.character(PDF.df[i,14]),
+                                                       as.character(PDF.df[i,15]),
+                                                       as.character(PDF.df[i,16]),
+                                                       as.character(PDF.df[i,17]),
+                                                       as.character(PDF.df[i,18]),
+                                                       sep = ""),
+                                                     sep = " "),
+                                after = length(Const_Name_No))
+      }
+    }
+    
+    PDF.df <- cbind.data.frame(Const_Name_No, PDF.df)
+    
+    
+    
+    # Fill in Const/subcounty columns...
     PDF.df[,1] <- as.character(PDF.df[,1])
     PDF.df[,2] <- as.character(PDF.df[,2])
     
+    Const_Name <- c(" ")
+    Subty_Name <- c(" ")
+    for (i in 1:nrow(PDF.df)) {
+      ifelse(isFALSE(PDF.df[i,1]==""),
+             Const_Name <- PDF.df[i,1],
+             PDF.df[i,1] <- Const_Name)
+      ifelse(isFALSE(PDF.df[i,2]==""),
+             Subty_Name <- PDF.df[i,2],
+             PDF.df[i,2] <- Subty_Name)
+    }
+    
+    # Remove original headers & junk rows
+    PDF.df <- PDF.df[-c(which(PDF.df[,19]=="")),]
+    PDF.df <- PDF.df[-c(which(PDF.df[,19]=="Total" | PDF.df[,19]=="Votes")),]
+    
+    # Set parish and station columns to character before wrap corrections
+    PDF.df[,3] <- as.character(PDF.df[,3])
+    PDF.df[,4] <- as.character(PDF.df[,4])
+    
     # Fix wrapped station and parish names
     for (i in 1:(nrow(PDF.df)-1)) {
-      if(PDF.df[i+1,3]=="" & isFALSE(PDF.df[i+1,2]=="") & isFALSE(PDF.df[i,2]=="")) {
-        PDF.df[i,2] <- stri_trim(paste(PDF.df[i,2], PDF.df[i+1,2], sep = " "))
+      if(PDF.df[i+1,5]=="" & isFALSE(PDF.df[i+1,4]=="") & isFALSE(PDF.df[i,4]=="")) {
+        PDF.df[i,4] <- stri_trim(paste(PDF.df[i,4], PDF.df[i+1,4], sep = " "))
       }
-      if(PDF.df[i+1,3]=="" & isFALSE(PDF.df[i+1,1]=="") & isFALSE(PDF.df[i,1]=="")) {
-        PDF.df[i,1] <- stri_trim(paste(PDF.df[i,1], PDF.df[i+1,1], sep = " "))
+      if(PDF.df[i+1,5]=="" & isFALSE(PDF.df[i+1,3]=="") & isFALSE(PDF.df[i,3]=="")) {
+        PDF.df[i,3] <- stri_trim(paste(PDF.df[i,3], PDF.df[i+1,3], sep = " "))
       }
     }
-    
-    
-    
-    # Assemble subcounty data
-    Subcounty_Indices <- which(is.na(stri_extract(PDF.df[,2], regex = "Sub-county Total"))==FALSE)
-    
-    Index_start = 1
-    Subcounty_Name_No_Array <- c()
-    for (i in seq_along(Subcounty_Indices)) {
-      Subcounty_Name_No_Array <- append(Subcounty_Name_No_Array, rep(Subcounty_Name_No[i], length(Index_start:Subcounty_Indices[i])), after = length(Subcounty_Name_No_Array))
-      Index_start = Subcounty_Indices[i]+1
-    }
-    
-    Subcounty_Name_No_Array <- append(Subcounty_Name_No_Array, rep(Subcounty_Name_No[length(Subcounty_Name_No)], nrow(PDF.df)-length(Subcounty_Name_No_Array)), after = length(Subcounty_Name_No_Array))
-    
-    
-    # Assemble constituency data
-    Const_Indices <- which(is.na(stri_extract(PDF.df[,2], regex = "Constituency Total"))==FALSE)
-    
-    Index_start = 1
-    Const_Name_No_Array <- c()
-    for (i in seq_along(Const_Indices)) {
-      Const_Name_No_Array <- append(Const_Name_No_Array, rep(Const_Name_No[i], length(Index_start:Const_Indices[i])), after = length(Const_Name_No_Array))
-      Index_start = Const_Indices[i]+1
-    }
-    
-    Const_Name_No_Array <- append(Const_Name_No_Array, rep(Const_Name_No[length(Const_Name_No)], nrow(PDF.df)-length(Const_Name_No_Array)), after = length(Const_Name_No_Array))
-    
     
     # Assemble district data
     Dist_Name_No_Array <- rep(Dist_Name_No, nrow(PDF.df))
-    
-    # Bind subcounty, constituency, and district data
-    PDF.df <- cbind.data.frame(Subcounty_Name_No_Array, PDF.df)
-    PDF.df <- cbind.data.frame(Const_Name_No_Array, PDF.df)
-    PDF.df <- cbind.data.frame(Dist_Name_No, PDF.df)
-    
+    PDF.df <- cbind.data.frame(Dist_Name_No_Array, PDF.df)
     
     # Remove percentage Rows and non-station-level total rows
     PDF.df <- PDF.df[which(
@@ -137,6 +156,8 @@ Convert_2021_StationResults = function(PDF_data_list, PDF_links, start, stop) {
     for (i in 1:5) {
       PDF.df[i] <- as.character(PDF.df[,i])
     }
+    
+    PDF.df[,3] <- str_remove(PDF.df[,3], "Sub-county: ")
     
     for (i in 6:20) {
       PDF.df[i] <- as.numeric(as.character(PDF.df[,i]))

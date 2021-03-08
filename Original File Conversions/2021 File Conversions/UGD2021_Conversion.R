@@ -1,5 +1,5 @@
 # Author: UEDP Team @ International Republican Institute
-# Last modified: 3/1/21
+# Last modified: 3/8/21
 
 #****************************************************************************
 # 1. PDF FILE DOWNLOADS & LOOKUP DATAFRAME FOR CONVERSION
@@ -68,6 +68,8 @@ download.file("https://www.ec.or.ug/sites/default/files/docs/Voter%20Count%20by%
 #****************************************************************************
 # 2. STATION PDF FILES CONVERSION
 
+#setwd("C:/Users/Ben/Desktop/UGD 2021 EC Data/Conversion Code")
+
 source("UGD2021_Conversion_Driver.R")
 
 #**********************************
@@ -121,6 +123,36 @@ rownames(Processed.df) <- c(1:nrow(Processed.df))
 
 # Correct for one error on Reg.Voter in Wakiso at "KAWEMPE MAJAANI FACTORY (NAM - Z)"
 Processed.df[33520,6] <- 1037
+
+# Correct spacing in Constituency names...
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " TOWN ", regex = "TOWN")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " COUNCIL ", regex = "COUNCIL")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " COUNTY ", regex = "COUNTY")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " NORTH ", regex = "NORTH")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " EAST ", regex = "EAST")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " WEST ", regex = "WEST")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " CENTRAL ", regex = "CENTRAL")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " SOUTH ", regex = "SOUTH")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " DIVISION ", regex = "DIVISION")
+Processed.df$Constituency <- stri_replace(Processed.df$Constituency, " MUNICIPALITY ", regex = "MUNICIPALITY")
+Processed.df$Constituency <- str_squish(str_trim(Processed.df$Constituency))
+
+
+# Correct spacing in Subcounty names...
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " TOWN ", regex = "TOWN")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " COUNCIL ", regex = "COUNCIL")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " COUNTY ", regex = "COUNTY")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " NORTH ", regex = "NORTH")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " EAST ", regex = "EAST")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " WEST ", regex = "WEST")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " CENTRAL ", regex = "CENTRAL")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " SOUTH ", regex = "SOUTH")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " DIVISION ", regex = "DIVISION")
+Processed.df$Subcounty <- stri_replace(Processed.df$Subcounty, " MUNICIPALITY ", regex = "MUNICIPALITY")
+Processed.df$Subcounty <- str_squish(str_trim(Processed.df$Subcounty))
+
+
+
 
 # WRITE THE CONVERTED DATASET AS .csv
 write.csv(Processed.df, "Converted_2021_Results.csv")
