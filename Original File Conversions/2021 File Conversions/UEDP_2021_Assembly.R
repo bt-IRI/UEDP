@@ -1,17 +1,12 @@
 # Author: UEDP Team @ International Republican Institute
 # Last modified: 3/8/21
 
-
 # Imports
 library(stringi)
 library(stringr)
 
-
-
-setwd("C:/Users/Ben/Desktop/UGD 2021 EC Data/Conversion Code")
 Converted_2021_Results.df <- read.csv("Converted_2021_Results.csv", stringsAsFactors = FALSE)
 Converted_2021_Results.df <- Converted_2021_Results.df[,-c(1)]
-
 
 Converted_2021_NullStations.df <- read.csv("Converted_2021_NullStations.csv", stringsAsFactors = FALSE)
 Converted_2021_NullStations.df <- Converted_2021_NullStations.df[,-c(1)]
