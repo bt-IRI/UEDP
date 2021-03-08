@@ -18,7 +18,12 @@ Instructions and code for generating each of these conversion files are povided 
 4. Ensure that all R packages under "Notes on Driver" are installed and that the environment for rJava is set correctly.
 5. Run remaining code to convert station results PDFs, the nullified polling stations PDF, the district tally sheet PDF, and/or the PDF of registered voters by polling stations. The code will write the conversions as .csv files.
 
+## Supplementary files:
+In addition to conversions of the previously mentioned PDF documents, the UEDP team merged data from the main 2021 polling station results file with the stations described in the nullified stations file. This complete dataset of ALL polling stations that existed during the 2021 general election,  as well as code used to generate this file, can be found here.
+* All Stations (2021 Results + 2021 Nullified Polling Stations) &#8594; [UEDP_2021_AllStations.csv](https://github.com/bt-IRI/UEDP/raw/master/Original%20File%20Conversions/2021%20File%20Conversions/UEDP_2021_AllStations.7z)
+* Code to generate the 'All Stations' file &#8594; [UEDP_2021_AllStations.R](https://github.com/bt-IRI/UEDP/blob/master/Original%20File%20Conversions/2021%20File%20Conversions/UEDP_2021_Assembly.R)
 
+Note: To generate the 'All Stations' dataset, both the 'Converted_2021_Results' and'Converted_2021_NullStations' datasets are required. 
 
 ## Package Citations:
 The following R packages were instrumental in the UEDP's conversion of the 2021 General Election results.
